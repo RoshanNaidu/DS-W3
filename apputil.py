@@ -34,11 +34,24 @@ df_bellevue = pd.read_csv(url)
 print(df_bellevue.head())
 
 # Task 1: Return sorted column names by missing values
-def task_1():
+'''def task_1():
     # First, clean the 'gender' column (assuming it contains missing values or incorrect entries)
     if 'gender' in df_bellevue.columns:
         # Replace any non-valid entries in 'gender' (if necessary) or drop rows with missing 'gender'
         df_bellevue['gender'] = df_bellevue['gender'].fillna('Unknown')
+    
+    # Sort columns based on the number of missing values (descending order: most missing to least missing)
+    missing_values = df_bellevue.isnull().sum()
+    sorted_columns = missing_values.sort_values(ascending=False).index.tolist()
+    
+    print(f"Sorted columns by missing values: {sorted_columns}")
+    return sorted_columns'''
+
+def task_1():
+    # Check if the dataframe is valid
+    if df_bellevue is None:
+        print("Error: df_bellevue is None.")
+        return None
     
     # Sort columns based on the number of missing values (descending order: most missing to least missing)
     missing_values = df_bellevue.isnull().sum()
@@ -55,7 +68,7 @@ def task_2():
     
     # Create a new column 'admissions' with a value of 1 for each row
     df_bellevue['admissions'] = 1
-    
+
     # Convert 'date_in' to datetime format if it's not already
     df_bellevue['date_in'] = pd.to_datetime(df_bellevue['date_in'], errors='coerce')
     
