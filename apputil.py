@@ -4,16 +4,42 @@ import pandas as pd
 
 # update/add code below ...
 
+
+'''The given function fibonacci(n) takes a parameter 
+n (int): The position in the Fibonacci sequence. 
+Note to be is that it must be a non-negative integer.
+It returns the Fibonacci number at position `n`. 
+If `n` is 0, then would return 0. if `n` is 1, then would return 1.
+otherwise only returns the sum of the previous two Fibonacci numbers.
+'''
+
 def fibonacci(n):
+
+    # Base case: If n is 0, the Fibonacci number is 0
+
     if n == 0:
         return 0
     elif n == 1:
         return 1
     else:
+
+        # recursion enabled via fibonacci(n-1) function call
+
         return fibonacci(n - 1) + fibonacci(n - 2)
+    
+# Try test cases
+print(fibonacci(10))  # Output: 55
+print(fibonacci(20))  # Output: 6765
+print(fibonacci(30))  # Output: 832040
+print(fibonacci(35))  # Output: 9227465
 
 
 
+'''The given function to_binary(n) takes a parameter of
+n (int) which is a non-negative integer.
+It returns the binary representation of the given integer `n` as a string.
+If `n` is 0, then the function returns '0'.
+If `n` is 1, then the function returns '1'.'''
 def to_binary(n):
     if n == 0:
         return "0"
@@ -21,6 +47,13 @@ def to_binary(n):
         return "1"
     else:
         return to_binary(n // 2) + str(n % 2)
+
+# Try test cases
+print(to_binary(10))  # Output: "1010" 
+print(to_binary(20))  # Output: "10100"
+print(to_binary(30))  # Output: "11110"
+print(to_binary(35))  # Output: "100011"
+
 
 
 
@@ -47,7 +80,6 @@ print(df_bellevue.head())
     print(f"Sorted columns by missing values: {sorted_columns}")
     return sorted_columns'''
 
-# Define task_1 function (from your previous code)
 def task_1():
     # Check if the dataframe is valid
     if df_bellevue is None:
@@ -64,7 +96,7 @@ def task_1():
     print(f"Sorted columns by missing values: {sorted_columns}")
     return sorted_columns
 
-# Call the function
+# Calling the function
 sorted_columns = task_1()
 
 # Task 2: Return a DataFrame with year and total admissions
