@@ -49,7 +49,14 @@ def task_1():
 
 # Task 2: Return a DataFrame with year and total admissions
 def task_2():
-# Convert 'date_in' to datetime format if it's not already
+
+    # Print column names to debug
+    print("Columns in df_bellevue:", df_bellevue.columns)
+    
+    # Create a new column 'admissions' with a value of 1 for each row
+    df_bellevue['admissions'] = 1
+    
+    # Convert 'date_in' to datetime format if it's not already
     df_bellevue['date_in'] = pd.to_datetime(df_bellevue['date_in'], errors='coerce')
     
     # Extract the year from the 'date_in' column
