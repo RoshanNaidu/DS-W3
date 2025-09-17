@@ -49,9 +49,11 @@ def task_1():
 
 # Task 2: Return a DataFrame with year and total admissions
 def task_2():
-    if 'year' not in df_bellevue.columns or 'admissions' not in df_bellevue.columns:
-        print("Error: 'year' or 'admissions' column missing.")
-        return None
+# Convert 'date_in' to datetime format if it's not already
+    df_bellevue['date_in'] = pd.to_datetime(df_bellevue['date_in'], errors='coerce')
+    
+    # Extract the year from the 'date_in' column
+    df_bellevue['year'] = df_bellevue['date_in'].dt.year
     
     # Group by 'year' and sum admissions
     total_admissions = df_bellevue.groupby('year')['admissions'].sum().reset_index()
