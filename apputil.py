@@ -47,6 +47,7 @@ print(df_bellevue.head())
     print(f"Sorted columns by missing values: {sorted_columns}")
     return sorted_columns'''
 
+# Define task_1 function (from your previous code)
 def task_1():
     # Check if the dataframe is valid
     if df_bellevue is None:
@@ -55,10 +56,16 @@ def task_1():
     
     # Sort columns based on the number of missing values (descending order: most missing to least missing)
     missing_values = df_bellevue.isnull().sum()
+    
+    # Sort by missing values in descending order and maintain the original column order for tie cases
     sorted_columns = missing_values.sort_values(ascending=False).index.tolist()
     
+    # Print the result for debugging
     print(f"Sorted columns by missing values: {sorted_columns}")
     return sorted_columns
+
+# Call the function
+sorted_columns = task_1()
 
 # Task 2: Return a DataFrame with year and total admissions
 def task_2():
