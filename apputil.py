@@ -40,9 +40,9 @@ def task_1():
         # Replace any non-valid entries in 'gender' (if necessary) or drop rows with missing 'gender'
         df_bellevue['gender'] = df_bellevue['gender'].fillna('Unknown')
     
-    # Sort columns based on the number of missing values (ascending order: least missing to most missing)
+    # Sort columns based on the number of missing values (descending order: most missing to least missing)
     missing_values = df_bellevue.isnull().sum()
-    sorted_columns = missing_values.sort_values().index.tolist()
+    sorted_columns = missing_values.sort_values(ascending=False).index.tolist()
     
     print(f"Sorted columns by missing values: {sorted_columns}")
     return sorted_columns
@@ -81,5 +81,8 @@ def task_4():
     # Get the top 5 most common professions
     most_common_professions = df_bellevue['profession'].value_counts().head(5)
     
+    # Convert the Series to a list
+    most_common_professions_list = most_common_professions.index.tolist()
+    
     print(f"Top 5 most common professions:\n{most_common_professions}")
-    return most_common_professions
+    return most_common_professions_list
